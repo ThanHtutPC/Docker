@@ -1,0 +1,8 @@
+# this is for flask web application
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+.env
+
