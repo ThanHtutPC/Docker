@@ -1,0 +1,14 @@
+version : '3.8'
+services:
+  
+  web:
+    image: flaskapp
+    command: python app.py
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/compose-app
+    depends_on:
+      - redis
+  redis:
+    image: redis:latest

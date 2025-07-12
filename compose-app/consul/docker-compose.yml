@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  consul:
+    image: hashicorp/consul:1.18
+    container_name: consul
+    command: agent -server -ui -node=consul-server -bootstrap-expect=1 -client=0.0.0.0 -config-dir=/consul/config
+    volumes:
+      - ./consul:/consul/config
+    ports:
+      - "8500:8500"     # UI
+      - "8600:8600/udp" # DNS
+    networks:
+      - consul-net
+
+  web:
+    build: ./web
+    container_name: web
+    environment:
+      - SERVICE_NAME=web
+    ports:
+      - "5000:5000"
+    networks:
+      - consul-net
+    depends_on:
+      - consul
+
+networks:
+  consul-net:

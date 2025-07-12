@@ -1,0 +1,17 @@
+{
+  "datacenter": "dc1",
+  "data_dir": "/data",
+  "log_level": "INFO",
+  "enable_script_checks": true,
+  "server": true,
+  "ui_config": {
+    "enabled": true
+},
+"service": [
+    {
+        "name": "web",
+        "address": "web",
+        "port": 5000
+    }
+]
+}
